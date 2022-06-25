@@ -10,7 +10,7 @@ namespace InterfaceDemo;
 /// super class 
 /// paretnt class
 /// </summary>
-public class Employee
+public class Employee : IExpensable
 {
 
     public string Name { get; set; }
@@ -23,6 +23,11 @@ public class Employee
     }
 
     public virtual decimal MonthlyCost()
+    {
+        return Salary / 12;
+    }
+
+    public virtual decimal MonthlyExpense()
     {
         return Salary / 12;
     }

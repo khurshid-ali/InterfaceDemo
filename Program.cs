@@ -17,17 +17,27 @@ Employee brian = new Driver("Brian Davis", 17.25M, 25);
 decimal brianCost = brian.MonthlyCost();
 Console.WriteLine($"Brian's monthly cost {brianCost.ToString("c")}");
 
-List<Employee> employeeList = new List<Employee>();
-employeeList.Add(heather);
-employeeList.Add(adam);
-employeeList.Add(carl);
-employeeList.Add(brian);
+Vehicle vehicle1 = new Vehicle("B-325", 35.00M);
+decimal v1Cost = vehicle1.MonthlyCost();
+Console.WriteLine("{0} vehicle cost = {1}", vehicle1.Registration, v1Cost.ToString("c"));
 
-var totalCost = 0.00M;
+Vehicle vehicle2 = new Vehicle("D-425", 65.00M);
+decimal v2Cost = vehicle1.MonthlyCost();
+Console.WriteLine("{0} vehicle cost = {1}", vehicle2.Registration, v2Cost.ToString("c"));
 
-foreach (Employee emp in employeeList)
+List<IExpensable> expenseList = new List<IExpensable>();
+expenseList.Add(heather);
+expenseList.Add(adam);
+expenseList.Add(carl);
+expenseList.Add(brian);
+expenseList.Add(vehicle1);
+expenseList.Add(vehicle2);
+
+var totalExpense = 0.00M;
+
+foreach (IExpensable item in expenseList)
 {
-    totalCost += emp.MonthlyCost();
+    totalExpense += item.MonthlyExpense();
 }
 
-Console.WriteLine($"Total cost is {totalCost.ToString("c")}");
+Console.WriteLine("Total Monthly expense {0}", totalExpense.ToString("c"));

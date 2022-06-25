@@ -9,7 +9,7 @@ namespace InterfaceDemo;
 /// Child class
 /// Derived Class
 /// </summary>
-public class Driver : Employee
+public class Driver : Employee, IExpensable
 {
     public decimal HourlyRate { get; set; }
     public int Hours { get; set; }
@@ -25,4 +25,11 @@ public class Driver : Employee
     {
         return 4 * HourlyRate * Hours;
     }
+
+    public override decimal MonthlyExpense()
+    {
+        return 4 * HourlyRate * Hours;
+    }
+
+
 }
